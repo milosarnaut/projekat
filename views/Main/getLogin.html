@@ -1,0 +1,27 @@
+{% extends "_global/index.html" %}
+{% block main %}
+
+<form action="{{ BASE }}user/login" method="POST" class="col-sm-12 col-md-4 offset-md-4" onsubmit="return validateLoginForm();">
+    <div class="text-center">
+        <div class="form-group col-sm-12">
+            <label for="input_username"><i class="fa fa-user"></i> Korisničko ime:</label><br/>
+            <input type="text" id="input_username" name="login_username" class="form-control col-md-12" required
+                placeholder="Unesite svoje korisničko ime...">
+        </div>
+
+        <div class="form-group col-sm-12">
+            <label for="input_password"><i class="fa fa-lock"></i> Lozinka:</label><br/>
+            <input type="password" id="input_password" name="login_password" class="form-control col-md-12" required
+                placeholder="Unesite svoju lozinku...">
+        </div>
+    </div>
+    <div class="form-group col-sm-12 text-center">
+        <button type="submit" class="btn btn-primary col-sm-12 col-md-4">
+            Prijavi se
+        </button>
+        <p class="forgotten-pass">Ako ste zaboravili lozinku kliknite <a href="{{ BASE }}user/restartPass">ovde</a>.</p>
+    </div>
+
+    <div class="alert alert-warning d-none" id="error-message"></div>
+</form>
+{% endblock %}

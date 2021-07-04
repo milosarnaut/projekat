@@ -1,0 +1,18 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+
+    <div class="terms">
+        {% for term in terms %}
+        <a href="{{ BASE }}term/{{ term.term_id }}" class="term">dan {{ term.day|escape }} mesec {{ term.month|escape }} godina {{ term.year|escape }} /</a>
+        {% endfor %}
+    </div>
+    <div>
+        <p>{{ message }}</p>
+
+        <p>Klikni <a href="{{ BASE }}admin/login">ovde</a> da se vratiš nazad.</p>
+    </div>
+    <p>Današnji datum i vreme: {{ "now"|date('d.m.Y. H.i', timezone="Europe/Belgrade") }}</p>
+    
+{% endblock %}
+

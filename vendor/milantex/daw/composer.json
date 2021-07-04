@@ -1,0 +1,39 @@
+{
+    "name": "milantex/daw",
+    "description": "Database Access Wrapper for Milantex's projects.",
+    "type" : "library",
+    "license" : "AGPL-3.0",
+    "minimum-stability" : "dev",
+    "authors" : [
+        {
+            "name" : "Milan Tair",
+            "email" : "milan.tair@gmail.com",
+            "homepage" : "http://milantex.info",
+            "role" : "Developer"
+        }
+    ],
+    "support" : {
+        "email" : "milan.tair@gmail.com"
+    },
+    "keywords" : [
+        "php",
+        "interface",
+        "database",
+        "wrapper",
+        "mysql",
+        "mariadb",
+        "sql",
+        "pdo"
+    ],
+    "require" : {
+        "php" : ">=7.0.0"
+    },
+    "require-dev" : {
+        "phpunit/phpunit" : "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Milantex\\DAW\\": "src/"
+        }
+    }
+}

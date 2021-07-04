@@ -1,0 +1,246 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+}
+
+main { margin-top: 5%;}
+
+.main-menu { background-color: #1BA0D7;}
+
+.navbar-toggler {
+    margin-left: 46.5%;
+}
+
+.block-element {display: block;}
+
+.home-page { margin-bottom: 150px;}
+
+.home-page-heading {margin-bottom: 30px;}
+
+.home-page-text {text-align: justify;}
+
+.potvrdiRez { display: none;}
+.otkaziRez { display: none;}
+.zatvoriTermin { display: none;}
+.oslobodiRez { display: none;}
+.choose-student { display: none;}
+
+.legend {
+    margin-bottom: 60px;
+}
+
+.big-buttons {
+    margin-top: 5%;
+}
+
+.big-button {
+    height: 50px;
+    font-weight: 600;
+    font-size: 20px
+}
+
+.wrapper { 
+    color: #fff;
+    width: 80%;
+    margin-top: -40px;
+    padding: 0px 35px;
+    margin-bottom: 150px;
+}
+
+.cisco-month {
+    display: flex;
+    flex-direction: row;
+    padding: 7px;
+    overflow: scroll;
+    overflow-y: hidden;
+}
+
+.cisco-day {
+    width: 20%;
+    border: 1px solid grey;
+    margin-right: 1%;
+ }
+
+.day-header {
+    text-align: center;
+    background-color: #fafdfd;
+    color: #000;
+    padding: 3px 4px;
+}
+
+.square {
+    width: 20%;
+    border: 1px solid lightgrey;
+}
+
+.cisco-term-slobodno {
+
+    height: 33px;
+    position: relative;
+}
+
+.cisco-hour-slobodno {
+    border-right: 0.5px solid grey;
+    border-bottom: 0.5px solid grey;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 23px;
+    width: 23px;
+    text-align: center;
+}
+
+.cisco-term-rezervisano {
+    background-color: rgb(0, 196, 216);
+    color: #fff;
+
+    height: 33px;
+    position: relative;
+}
+
+.cisco-hour-rezervisano {
+    border-right: 0.5px solid grey;
+    border-bottom: 0.5px solid grey;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 23px;
+    width: 23px;
+    text-align: center;
+}
+
+.cisco-term-zatvoreno {
+    background-color: #ebebeb;
+
+    height: 33px;
+    position: relative;
+}
+
+.cisco-hour-zatvoreno {
+    border-right: 0.5px solid grey;
+    border-bottom: 0.5px solid grey;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 23px;
+    width: 23px;
+    text-align: center;
+}
+
+.cisco-term {
+    border-top: 1px solid #cecece;
+    height: 33px;
+    position: relative;
+}
+
+.cisco-terms:hover .cisco-term {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.cisco-hour {
+    border-right: 0.5px solid grey;
+    border-bottom: 0.5px solid grey;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 23px;
+    width: 23px;
+    text-align: center;
+}
+
+.current-time { 
+    text-align: center;
+    font-size: 17px;
+}
+
+.reserved {background-color: rgb(0, 196, 216);}
+
+.open {
+    background-color: #fdfdfd;
+    color: #000;
+}
+
+.closed {
+    background-color: #ebebeb;
+    color: #666;
+}
+
+.calendar-day {
+    text-decoration: none;
+    color: #000
+}
+
+.calendar-day:hover {
+    text-decoration: none;
+    color: #000
+}
+
+.admin-register { margin-bottom: 125px;}
+
+.student-register {margin-bottom: 125px;}
+
+.site-footer { 
+    text-align: center;
+    background-color: #1BA0D7;
+    margin-top: 50px;
+    position: fixed;
+    color: #fff;
+    padding: 31px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.nav-link {
+    color: #fff !important;
+    text-align: center !important;
+}
+
+.nav-link:hover { color: #e4e1e1 !important;}
+
+.forgotten-pass {
+    padding: 7px;
+}
+
+.cisco-term:hover {
+    opacity: 1.0 !important;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 960px) {
+
+    .wrapper { 
+        margin-top: -30px;
+    }
+
+}
+
+@media screen and (max-width: 770px) {
+
+    /* Lome se kolone na ovoj rezoluciji, popraviti to*/
+
+}
+
+@media screen and (max-width: 650px) {
+
+    .wrapper { 
+        margin-top: -20px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .wrapper { 
+        margin-top: 0px;
+    }
+
+}

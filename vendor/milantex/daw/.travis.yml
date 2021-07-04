@@ -1,0 +1,29 @@
+language: php
+
+php:
+  - 7.0
+
+addons:
+  mariadb: '10.2'
+  code_climate:
+    repo_token: f8c078c2a99177d72ef3543760c5ece9e09ef11abccd2cd3367d57acdc6cd996
+
+install:
+  - composer install --no-interaction
+
+before_script:
+  - mysql -e "DROP DATABASE IF EXISTS \`bayou\`; CREATE DATABASE \`bayou\`;" -uroot
+  - mysql -e "USE \`bayou\`; CREATE TABLE IF NOT EXISTS \`post\` (\`post_id\` bigint(20) unsigned NOT NULL AUTO_INCREMENT, \`created_at\` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, \`user_id\` int(11) unsigned NOT NULL, \`title\` varchar(128) COLLATE utf8_unicode_ci NOT NULL, \`link\` varchar(128) COLLATE utf8_unicode_ci NOT NULL, \`content\` text COLLATE utf8_unicode_ci NOT NULL, \`visible\` bit(1) NOT NULL DEFAULT b'1', PRIMARY KEY (\`post_id\`), UNIQUE KEY \`link\` (\`link\`)) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;" -uroot
+  - mysql -e "USE \`bayou\`; INSERT IGNORE INTO \`post\` (\`post_id\`, \`created_at\`, \`user_id\`, \`title\`, \`link\`, \`content\`, \`visible\`) VALUES (1, '2015-02-12 20:44:04', 1, 'Limitless Bayou begins', 'limitsless-bayou-begins', 'This is a sample post in a database used by the Limitless Bayou API.', b'1'), (2, '2015-02-12 21:04:27', 1, 'Another post in the database', 'another-post-in-the-database', 'This is the content of the second post in the Limitless Bayou API project.', b'0');" -uroot
+  - mysql -e "USE \`bayou\`; CREATE TABLE IF NOT EXISTS \`user\` (\`user_id\` int(11) unsigned NOT NULL AUTO_INCREMENT, \`created_At\` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, \`username\` varchar(64) COLLATE utf8_unicode_ci NOT NULL, \`password\` varchar(128) COLLATE utf8_unicode_ci NOT NULL, \`active\` bit(1) NOT NULL DEFAULT b'1', PRIMARY KEY (\`user_id\`), UNIQUE KEY \`username\` (\`username\`)) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;" -uroot
+  - mysql -e "USE \`bayou\`; INSERT IGNORE INTO \`user\` (\`user_id\`, \`created_At\`, \`username\`, \`password\`, \`active\`) VALUES (1, '2015-02-12 20:41:12', 'milantex', '30B1B23A56D4AAA7BF951355D4F3CCFB157F2CF7B27D673A1B91613C431F28A76D3E621B9F38FD3C7954D619909EF4CBB574E225D6D60EDC6D423E652112633A', b'1'), (2, '2016-05-29 15:41:37', 'admin', '30B1B23A56D4AAA7BF951355D4F3CCFB157F2CF7B27D673A1B91613C431F28A76D3E621B9F38FD3C7954D619909EF4CBB574E225D6D60EDC6D423E652112633A', b'0');" -uroot
+
+script:
+    - vendor/bin/phpunit --coverage-clover=coverage.xml
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email:
+    - milan.tair@gmail.com

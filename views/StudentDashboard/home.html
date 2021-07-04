@@ -1,0 +1,137 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+
+    <div class="legend col-sm-10 offset-sm-2 row">
+        <div class="lc col col-sm-4">
+            <p>Slobodno:</p>
+            <div class="square s1">
+                <div class="cisco-terms-slobodno">
+                    <div class = "cisco-term-slobodno">
+                        <span class = "cisco-hour-slobodno">
+                            h
+                        </span>
+                    </div>     
+                </div>
+            </div>
+        </div>
+
+        <div class="mc col col-sm-4">
+            <p>Rezervisano:</p>
+            <div class="square s2">
+                <div class="cisco-terms-rezervisano">
+                    <div class = "cisco-term-rezervisano">
+                        <span class = "cisco-hour-rezervisano">
+                            h
+                        </span>
+                    </div>     
+                </div>
+            </div>
+        </div>
+
+        <div class="rc col col-sm-4">
+            <p>Zatvoreno:</p>
+            <div class="square s3">
+                <div class="cisco-terms-zatvoreno">
+                    <div class = "cisco-term-zatvoreno">
+                        <span class = "cisco-hour-zatvoreno">
+                            h
+                        </span>
+                    </div>     
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wrapper col-md-10 offset-md-1">
+        <div class="wrapper-content">
+            {% for year, months in termStructure %}
+            <div class="cisco-year" data-year="{{ year }}">  
+                <div class="cisco-month" data-month="{{ month }}">
+                    {% for month, days in months %}
+                    {% for day, dayData in days %}
+                    <div class="cisco-day" data-day="{{ day }}">
+                        <div class="day-header">
+                            {{ dayData.dow }}
+                            <br>
+                            {{ day }}.{{ month }}.{{ year }}.
+                        </div>
+                        <div class="cisco-terms">
+                            {% for term in dayData.terms %}
+                            <div class = "cisco-term" data-term="{{ term.term_id }}" data-toggle="modal" data-target="#myModal">
+                                <span class = "cisco-hour">
+                                    {{ term.hour }}
+                                </span>
+                            </div>
+                            {%endfor%}             
+                        </div>
+                    </div>
+                    {%endfor%}
+                {%endfor%}
+            </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>  
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Izaberite opciju za željeni termin</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <!--<form action="">-->
+            <form method="POST" action="{{ BASE }}student/term/edit">
+                <input type="hidden" name="term_id" value="" id="term_id">
+                <input type="radio" id="rbS1" class="rb1" name="radio" onclick="confirmResStudent()" value="R"> Rezerviši termin<br>
+                <input type="radio" id="rbS2" class="rb2" name="radio" onclick="cancelResStudent()" value="S"> Otkaži rezervaciju<br>
+
+                <div class="modal-footer">
+                    <div class="potvrdiRez" id="rezStudent"><button type="submit" class="btn btn-outline-primary">Potvrdi rezervaciju</button></div>
+                    <div class="otkaziRez" id="otkaziStudent"><button type="submit" class="btn btn-outline-primary">Otkaži rezervaciju</button></div>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Odustani</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+
+{% block test %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card bg-primary text-white mt-5 p-4">
+                
+                <h1>Number Facts</h1>
+                <p>Enter a number and get a random fact</p>
+                <input type="number" class="form-control form-control-lg" id="numberInput" placeholder="Enter any number...">
+                
+                <div id="fact" class="card-body fact">
+                    <h4 class="card-title">
+                    Number Fact
+                    </h4>
+                    <p id="factText" class="card-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

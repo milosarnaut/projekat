@@ -1,0 +1,19 @@
+{% extends "_global/index.html" %}
+{% block main %}
+
+<form action="{{ BASE }}user/restartPass" method="POST" class="col-sm-12 col-md-4 offset-md-4">
+    
+    <div class="form-group col-md-12 text-center">
+        <label for="input_email"><i class="fa fa-at"></i> E-mail:</label>
+        <input type="email" id="input_email" name="input_email" required placeholder="Unesite svoju adresu e-pošte u ovo polje." class="form-control">
+    </div>
+    
+    <div class="form-group col-sm-12 text-center">
+        <button type="submit" class="btn btn-primary col-sm-12 col-md-6">
+            Promeni lozinku
+        </button>
+    </div>
+
+    <div class="alert alert-warning d-none" id="error-message"></div>
+</form>
+{% endblock %}

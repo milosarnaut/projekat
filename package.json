@@ -1,0 +1,19 @@
+{
+  "name": "pizzaorder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "milos.arnaut.18@singimail.rs",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "bootstrap": "4",
+    "composer": "^4.1.0",
+    "git": "^0.1.5",
+    "jquery": "^3.6.0",
+    "yarn": "^1.22.10"
+  }
+}

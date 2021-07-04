@@ -1,0 +1,21 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+
+    <div class="container agenda-agenda col-md-10 offset-md-1 text-center">
+        <div class="text-center datum">{{ day }}. {{ month }}. {{ year }}.</div>
+            <hr class="devider"> 
+            
+            {% for reservation in reservations %}
+                <form method="POST" action="{{ BASE }}admin/agenda/delete/{{ reservation.reservation_id }}" onsubmit="return confirm('Da li ste sigurni da želite da obrišete ovu rezervaciju?');">
+                    <div class="sadrzaj row text-center col-sm-12"> 
+                        <p class="prikaz col col-sm-4">Rezervacija: {{ reservation.reservation_id }}</p>
+                        <p class="prikaz col col-sm-4">{{ reservation.student.name }} {{ reservation.student.surname }}</p>
+                        <p class="prikaz col col-sm-2">{{ reservation.term.hour }}.00</p>
+                        <button type="submit" class="btn btn-outline-primary col col-sm-2"><i class="fa fa-trash"></i></button>
+                    </div>
+                </form>
+            {% endfor %}
+        </div>
+
+{% endblock %}

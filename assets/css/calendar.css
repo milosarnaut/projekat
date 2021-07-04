@@ -1,0 +1,159 @@
+.calendar {
+    text-decoration: none;
+    /*background-color: rgb(151, 155, 156);*/
+    color: #000;
+    padding: 25px 65px 65px 65px;
+    border-radius: 45px;
+    opacity: 0.95;
+    margin-bottom: 100px;
+    margin-top: -40px;
+}
+
+.godina {
+    width: 100%;
+}
+
+.mesec {
+    display: block;
+}
+
+.din {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.dan {
+    display: inline-block;
+    width: calc((100% - 14px) / 7);
+    height: 45px;
+    margin: 1px;
+}
+
+.dan .blank {
+    background-color: rgba(10, 59, 116, 0.2); /*rgba(60, 60, 60, 0.3);*/
+    opacity: 0.4;
+    border-radius: 5px;
+}
+
+.dan .blank:hover {
+    background-color: rgba(10, 59, 116, 0.3);
+    cursor: not-allowed;
+}
+
+.dan-u-nedelji {
+    display: inline-block;
+    width: calc((100% - 14px) / 7);
+    text-align: center;
+}
+
+.dan-datum {
+    /*border-bottom: 1px solid lightgrey;*/
+    text-align: center;
+    background-color: #e9e9ea;
+    border: 1px solid #d8d8da;
+    color: #000;
+    border-radius: 5px;
+    height: 35px;
+    padding-top: 5px;
+    position: relative;
+}
+
+.actual-day {
+    position: absolute;
+    background: #000;
+    top: 4px;
+    right: 5px;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+}
+
+.final-data {
+    border: 1px solid transparent;
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+}
+
+.dan-datum:hover .final-data {
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+.agenda {
+    text-decoration: none;
+}
+
+.dan-datum:hover {
+    text-decoration: none;
+    background-color: #c9c9c9;
+    opacity: 30%;
+    cursor: pointer;
+}
+
+.year-group > a {
+    text-decoration: none;
+    color: #000;
+    margin: 0px 100px;
+    font-size: 17px;
+}
+
+.year-group > a:hover {
+    color: #1BA0D7;
+}
+
+.month-group > a {
+    text-decoration: none;
+    color: #000;
+    margin: 0px 120px;
+    font-size: 17px;
+}
+
+.month-group > a:hover {
+    color: #1BA0D7;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .year-group > a {
+        margin: 0px 10px;
+        font-size: 17px;
+    }
+
+    .month-group > a {
+        margin: 0px 10px;
+        font-size: 17px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .year-group > a {
+        font-size: 14px;
+        width: 100%;
+        margin: 0 5px;
+    }
+
+    .month-group > a {
+        font-size: 14px;
+        width: 100%;
+        margin: 0 5px;
+    }
+
+    .razmak {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .year-group > a {
+        margin: 0;
+    }
+
+    .month-group > a {
+        margin: 0;
+    }
+
+}

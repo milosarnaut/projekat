@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    bootstrap="vendor/autoload.php"
+    verbose = "true"
+    colors="true"
+    strict="true">
+    <testsuites>
+        <testsuite name="all">
+            <directory suffix='.php'>./test</directory>
+        </testsuite>
+    </testsuites>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">src</directory>
+			<file>src/DataBase.php</file>
+		</whitelist>
+	</filter>
+	<logging>
+        <log type="coverage-clover" target="clover.xml" />
+    </logging>
+</phpunit>

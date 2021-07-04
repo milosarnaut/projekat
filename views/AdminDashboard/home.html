@@ -1,0 +1,102 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+
+    <div class="wrapper col-md-10 offset-md-1">
+        <div class="wrapper-content">
+            {% for year, months in termStructure %}
+            <div class="cisco-year" data-year="{{ year }}">  
+                <div class="cisco-month" data-month="{{ month }}">
+                    {% for month, days in months %}
+                    {% for day, dayData in days %}
+                    <div class="cisco-day" data-day="{{ day }}">
+                        <div class="day-header">
+                            {{ dayData.dow }}
+                            <br>
+                            {{ day }}.{{ month }}.{{ year }}.
+                        </div>
+                        <div class="cisco-terms">
+                            {% for term in dayData.terms %}
+                            <div class = "cisco-term" data-term="{{ term.term_id }}" data-toggle="modal" data-target="#myModal">
+                                <span class = "cisco-hour">
+                                    {{ term.hour }}
+                                </span>
+                            </div>
+                            {%endfor%}             
+                        </div>
+                    </div>
+                    {%endfor%}
+                {%endfor%}
+            </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>    
+    <br/>
+
+<p class="current-time">Datum i vreme: {{ "now"|date('d.m.Y. H.i', timezone="Europe/Belgrade") }}</p>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Izaberite opciju za traženi termin:</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <!--<form action="">-->
+            <form method="POST" action="{{ BASE }}admin/term/edit">
+                <input type="hidden" name="term_id" value="" id="term_id">
+                <input type="radio" id="rb1" class="rb1" name="radio" onclick="confirmRes()" value="R"> Rezerviši termin<br>
+                <input type="radio" id="rb2" class="rb2" name="radio" onclick="cancelRes()" value="S"> Otkaži rezervaciju<br>
+                <input type="radio" id="rb3" class="rb3" name="radio" onclick="freeTerm()" value="S"> Oslobodi termin<br>
+                <input type="radio" id="rb4" class="rb4" name="radio" onclick="closeTerm()" value="Z"> Zatvori Termin
+
+                <div class="modal-footer block-element">
+                    
+                    <div id="choose-student" class="choose-student row">
+                        
+                        <!--
+                        <div class="first-column col-sm-12 form-group">    
+                            <label for="search_index">Broj indeksa:</label>
+                            <input type="number" id="search_index" name="search_index" placeholder="Unesite broj indeksa." class="form-control">
+                        </div>
+                        -->
+                        
+                        <div id="searching" class="second-column col col-sm-12 form-group">    
+                            <label for="index_number">Izaberite studenta: </label>
+                            <input type="text" pattern="^20[0-9]{8}$" maxlength="10" list="index_number" id="index_number_input" name="index_number_input" placeholder="Unesite broj indeksa studenta" class="form-control">
+                            <datalist id="index_number" name="index_number" class="form-control" required style="display: none;">
+                                {% for student in students %}
+                                <option value="{{ student.index_number }}">
+                                {% endfor %}
+                            </datalist>
+                        </div>
+
+                    </div>
+
+                    <div class="form-buttons col-sm-12 row">
+                        <div class="potvrdiRez col col-sm-6" id="rez"><button type="submit" class="btn btn-outline-primary col-sm-12">Potvrdi rezervaciju</button></div>
+                        <div class="otkaziRez col col-sm-6" id="otkazi"><button type="submit" class="btn btn-outline-primary col-sm-12">Otkaži rezervaciju</button></div>
+                        <div class="oslobodiRez col col-sm-6" id="oslobodi"><button type="submit" class="btn btn-outline-primary col-sm-12">Oslobodi termin</button></div>
+                        <div class="zatvoriTermin col col-sm-6" id="zatvori"><button type="submit" class="btn btn-outline-primary col-sm-12">Zatvori termin</button></div>
+                        <div class="col col-sm-6"><button type="button" class="btn btn-primary col-sm-12" data-dismiss="modal">Odustani</button></div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

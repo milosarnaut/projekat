@@ -1,0 +1,63 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+
+    <div class="container calendar col-md-10 offset-md-1">
+        <div class="container text-center">
+            <div class="year-group">
+                <a class="razmak link" href="{{ BASE }}admin/calendar/{{ year - 1 }}/{{ month }}"><i class="fa fa-angle-left"></i> {{ year - 1 }}</a> 
+                | {{ year }} |
+                <a class="razmak link" href="{{ BASE }}admin/calendar/{{ year + 1 }}/{{ month }}">{{ year + 1 }} <i class="fa fa-angle-right"></i> </a>
+            </div>
+        </div>
+        <div class="container razmak text-center">
+            <div class="month-group text-center">
+                {% if month - 1 < 1 %}
+                    <a href="{{ BASE }}admin/calendar/{{ year - 1 }}/12"><i class="fa fa-angle-left"></i> {{ meseci[12] }}</a> |
+                {% else %}
+                    <a href="{{ BASE }}admin/calendar/{{ year }}/{{ month - 1 }}"><i class="fa fa-angle-left"></i> {{ meseci[month - 1] }}</a> |
+                {% endif %}
+                {{ meseci[month] }} |
+                {% if month + 1 > 12 %}
+                    <a href="{{ BASE }}admin/calendar/{{ year + 1 }}/1">{{ meseci[1] }} <i class="fa fa-angle-right"></i></a>
+                {% else %}
+                    <a href="{{ BASE }}admin/calendar/{{ year }}/{{ month + 1 }}">{{ meseci[month + 1] }} <i class="fa fa-angle-right"></i></a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="text-center din">
+            <div class="dan-u-nedelji">P</div>
+            <div class="dan-u-nedelji">U</div>
+            <div class="dan-u-nedelji">S</div>
+            <div class="dan-u-nedelji">Č</div>
+            <div class="dan-u-nedelji">P</div>
+            <div class="dan-u-nedelji">S</div>
+            <div class="dan-u-nedelji">N</div>
+        </div>
+        <div class="mesec">
+            {% for day in calendar %}
+                {% if day.show %}
+                <div class="dan" data-day="{{ day.day }}">
+                    <a class="agenda" href="{{ BASE }}admin/agenda/{{ year }}/{{ month }}/{{ day.day }}">
+                        <div class="dan-datum">
+                            <span class="final-data">
+                                {{ day.day }}
+                            </span>
+                            {% if currentDate == day.date %}
+                            <span class="actual-day"></span>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+                {% else %}
+                <div class="dan">
+                    <div class="dan-datum blank">
+                        &nbsp;
+                    </div>
+                </div>
+                {% endif %}
+            {%endfor%}
+        </div>
+    </div>    
+{% endblock %}

@@ -1,0 +1,8 @@
+{% if role == 'admin' %}
+    {% include '_global/adminMenu.html' %}
+{% elseif role == 'student' %}
+    {% include '_global/studentMenu.html' %}
+{% else %}
+    {% include '_global/startMenu.html' %}
+{% endif %}
+
